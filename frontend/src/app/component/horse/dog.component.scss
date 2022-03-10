@@ -1,0 +1,13 @@
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  // & > span:not(:first-child) {
+  //     margin-left: 1em;
+  // }
+}
+
+.full-width {
+  width: 100%;
+}
+

@@ -1,0 +1,91 @@
+<form style="width: 40%" [formGroup]="dogForm">
+  <div class="mb-3">
+    <label for="dogName" class="form-label">Name</label>
+    <input
+      type="name"
+      class="form-control"
+      id="dogName"
+      placeholder="Write name here"
+      formControlName="name"
+    />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)">
+      <p class="input-error-label">Name is required</p>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="dogDescription" class="form-label">Description</label>
+    <textarea
+      class="form-control"
+      id="dogDescription"
+      rows="2"
+      formControlName="description"
+    ></textarea>
+  </div>
+
+  <div class="col-12">
+    <label>Birthdate</label>
+    <div class="input-group">
+      <input
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dp"
+        ngbDatepicker
+        #d="ngbDatepicker"
+        formControlName="birthdate"
+      />
+      <button
+        class="btn btn-outline-secondary calendar"
+        (click)="d.toggle()"
+        type="button"
+      ></button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        id="male"
+        value="MALE"
+        formControlName="gender"
+        [checked]="dogForm.value.gender === 'MALE'"
+      />
+      <label class="form-check-label" for="male"> Male </label>
+    </div>
+    <div class="form-check mx-4">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        id="female"
+        value="FEMALE"
+        formControlName="gender"
+        [checked]="dogForm.value.gender === 'FEMALE'"
+      />
+      <label class="form-check-label" for="female"> Female </label>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    (click)="submit()"
+    class="btn btn-primary"
+    [disabled]="!dogForm.valid"
+  >
+    Submit
+  </button>
+
+  <!-- <button (click)="clicked()">{{ clickService.counter }}</button>
+  <p *ngFor="let dog of dogs">
+    {{ dog }}
+  </p>
+  <div>Routeparameter: {{ id }}</div>
+  <p *ngIf="clickService.counter % 2 == 0; else otherContent">
+    counter is in 0 mod 2
+  </p>
+
+  <ng-template #otherContent> counter is in 1 mod 2 </ng-template> -->
+</form>

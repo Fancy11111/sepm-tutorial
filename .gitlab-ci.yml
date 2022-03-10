@@ -1,0 +1,27 @@
+image: maven:3-openjdk-17
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  GIT_STRATEGY: "clone"
+
+cache:
+  paths:
+    - .m2/
+
+stages:
+  - test
+
+test-backend:
+  stage: test
+  script:
+    - cd backend
+    - mvn -B clean install
+
+test-frontend:
+  image: node:lts
+  stage: test
+  script:
+    - cd frontend
+    - npm install
+    - npm run build
+

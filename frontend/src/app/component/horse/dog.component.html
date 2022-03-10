@@ -1,0 +1,47 @@
+<!-- SANITY CHECK BANNER
+    This is just for checking, that your setup works.
+    You can – and should – remove this later
+    -->
+<div class="container mt-3" *ngIf="error">
+  <div class="alert alert-danger" id="example" role="alert">
+    <h4>Error!</h4>
+    {{ error }}
+    <p>Could not load horses.</p>
+    <p>Something is not quite right. Did you start the backend?</p>
+    <button
+      type="button"
+      (click)="vanishError()"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+
+<div class="container mt-3" *ngIf="!error && horses">
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>Your application is up and running.</p>
+    <p>You should see the current list of horses below.</p>
+  </div>
+</div>
+<!-- END SANITY CHECK BANNER -->
+
+<div class="flex-horizontal full-width mt-3">
+  <button class="btn btn-light mr-1" (click)="reloadDogs()">&#x21bb;</button>
+</div>
+
+<div class="mt-3">
+  <table class="table table-hover">
+    <thead>
+      <th>Name</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dog of dogs">
+        <td>{{ dog.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

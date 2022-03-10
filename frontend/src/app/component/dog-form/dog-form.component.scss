@@ -1,0 +1,7 @@
+.input-error-label {
+  color: red;
+}
+
+input.ng-invalid.ng-touched {
+  outline: 1px red solid;
+}
