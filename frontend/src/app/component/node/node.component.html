@@ -1,0 +1,36 @@
+<div
+  style="
+    border: 1px solid black;
+    width: 100%;
+    padding: 20px 30px 5px 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  "
+>
+  <div style="width: 100%; overflow: hidden">
+    {{ node.value.name }}
+    <button
+      class="btn btn-secondary"
+      (click)="displayChildren = !displayChildren"
+      *ngIf="node.mother || node.father"
+    >
+      {{ displayChildren ? "Hide Children" : "Display Children" }}
+    </button>
+  </div>
+
+  <div
+    style="display: flex; flex-direction: row; width: 100%"
+    [style]="displayChildren ? '' : 'height: 0px; display: none'"
+    *ngIf="node.mother"
+  >
+    <app-node [node]="node.mother" style="flex-grow: 1"></app-node>
+  </div>
+  <div
+    style="display: flex; flex-direction: row; width: 100%"
+    *ngIf="node.father"
+    [style]="displayChildren ? '' : 'height: 0px; display: none'"
+  >
+    <app-node [node]="node.father" style="flex-grow: 1"></app-node>
+  </div>
+</div>
